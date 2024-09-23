@@ -148,15 +148,15 @@ namespace GymMembershipAppDAL
         {
             bool isupdated = false;
 
-            if (!isUserExist(username)) return false;
             using (SqlConnection connection = new SqlConnection(DALSettings.connectionString))
             {
-                string query = "UPDATE usercards SET username = @username, password = @password WHERE memberid = @memberid";
+                string query = "UPDATE usercards SET username = @username, password = @password, email = @email WHERE memberid = @memberid";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", username);
                 command.Parameters.AddWithValue("@password", password);
                 command.Parameters.AddWithValue("@memberid", memberid);
+                command.Parameters.AddWithValue("@email", email);
 
                 try
                 {
@@ -169,7 +169,6 @@ namespace GymMembershipAppDAL
                     //Console.WriteLine(ex.ToString());
                     isupdated = false;
                 }
-                connection.Close();
                 return isupdated;
             }
         }

@@ -84,6 +84,8 @@ namespace GymMembership
                         member = fillMember(txtboxFirstname.Text, txtboxLastname.Text,
                         DateTime.ParseExact(txtboxDateOfBirth.Text, "dd/MM/yyyy", null), txtboxPhone.Text, comboBox1.SelectedIndex + 1);
                         memberid = member.addMembergetID();
+                        BLLPayments.addRecord(member.MemberID, (comboBox1.SelectedIndex + 1) * 10, null);
+
                     }
                     else
                     {

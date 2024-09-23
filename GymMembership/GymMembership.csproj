@@ -58,6 +58,12 @@
     <Compile Include="frmAddMember.Designer.cs">
       <DependentUpon>frmAddMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminPayments.Designer.cs">
+      <DependentUpon>frmAdminPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAllMembers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     </Compile>
     <Compile Include="frmMembershipPlans.Designer.cs">
       <DependentUpon>frmMembershipPlans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayments.Designer.cs">
+      <DependentUpon>frmPayments.cs</DependentUpon>
     </Compile>
     <Compile Include="frmRenewMembership.cs">
       <SubType>Form</SubType>
@@ -130,6 +142,11 @@
     <Compile Include="frmViewProfile.Designer.cs">
       <DependentUpon>frmViewProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="GymDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAdmin.resx">
@@ -137,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddMember.resx">
       <DependentUpon>frmAddMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminPayments.resx">
+      <DependentUpon>frmAdminPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAllMembers.resx">
       <DependentUpon>frmAllMembers.cs</DependentUpon>
@@ -152,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMembershipPlans.resx">
       <DependentUpon>frmMembershipPlans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayments.resx">
+      <DependentUpon>frmPayments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRenewMembership.resx">
       <DependentUpon>frmRenewMembership.cs</DependentUpon>
@@ -180,6 +203,17 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="GymDataSet.xsc">
+      <DependentUpon>GymDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GymDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GymDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GymDataSet.xss">
+      <DependentUpon>GymDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

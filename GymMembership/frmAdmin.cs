@@ -58,5 +58,11 @@ namespace GymMembership
         {
             this.Close();
         }
+
+        private void menuPayments_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmAdminPayments();
+            frm.ShowDialog();
+        }
     }
 }

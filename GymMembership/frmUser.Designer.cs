@@ -32,13 +32,13 @@
             this.addMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateProfileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewProfileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plansMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.renewMembershipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paymentsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.updateAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,23 +74,30 @@
             // updateProfileMenu
             // 
             this.updateProfileMenu.Name = "updateProfileMenu";
-            this.updateProfileMenu.Size = new System.Drawing.Size(260, 36);
+            this.updateProfileMenu.Size = new System.Drawing.Size(275, 36);
             this.updateProfileMenu.Text = "Update Profile";
             this.updateProfileMenu.Click += new System.EventHandler(this.updateProfileMenu_Click);
             // 
             // viewProfileMenu
             // 
             this.viewProfileMenu.Name = "viewProfileMenu";
-            this.viewProfileMenu.Size = new System.Drawing.Size(260, 36);
+            this.viewProfileMenu.Size = new System.Drawing.Size(275, 36);
             this.viewProfileMenu.Text = "View Profile";
             this.viewProfileMenu.Click += new System.EventHandler(this.viewProfileMenu_Click);
+            // 
+            // updateAccountToolStripMenuItem
+            // 
+            this.updateAccountToolStripMenuItem.Name = "updateAccountToolStripMenuItem";
+            this.updateAccountToolStripMenuItem.Size = new System.Drawing.Size(275, 36);
+            this.updateAccountToolStripMenuItem.Text = "Update Account";
+            this.updateAccountToolStripMenuItem.Click += new System.EventHandler(this.updateAccountToolStripMenuItem_Click);
             // 
             // deleteMemberToolStripMenuItem
             // 
             this.deleteMemberToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
             this.deleteMemberToolStripMenuItem.Name = "deleteMemberToolStripMenuItem";
-            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(260, 36);
-            this.deleteMemberToolStripMenuItem.Text = "Delete Profile";
+            this.deleteMemberToolStripMenuItem.Size = new System.Drawing.Size(275, 36);
+            this.deleteMemberToolStripMenuItem.Text = "Delete Account";
             this.deleteMemberToolStripMenuItem.Click += new System.EventHandler(this.deleteMemberToolStripMenuItem_Click);
             // 
             // plansMenu
@@ -119,6 +126,7 @@
             this.paymentsMenu.Name = "paymentsMenu";
             this.paymentsMenu.Size = new System.Drawing.Size(139, 35);
             this.paymentsMenu.Text = "Payments";
+            this.paymentsMenu.Click += new System.EventHandler(this.paymentsMenu_Click);
             // 
             // btnLogout
             // 
@@ -146,13 +154,6 @@
             this.lblTitle.Size = new System.Drawing.Size(427, 98);
             this.lblTitle.TabIndex = 46;
             this.lblTitle.Text = "Welcome ";
-            // 
-            // updateAccountToolStripMenuItem
-            // 
-            this.updateAccountToolStripMenuItem.Name = "updateAccountToolStripMenuItem";
-            this.updateAccountToolStripMenuItem.Size = new System.Drawing.Size(275, 36);
-            this.updateAccountToolStripMenuItem.Text = "Update Account";
-            this.updateAccountToolStripMenuItem.Click += new System.EventHandler(this.updateAccountToolStripMenuItem_Click);
             // 
             // frmUser
             // 

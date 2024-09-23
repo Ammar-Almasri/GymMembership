@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -42,35 +43,69 @@ namespace GymMembershipAppDAL
             return isFound;
         }
 
-        //public static bool addRecord(int memberid, double amount, string cardnum)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(DALSettings.connectionString))
-        //    {
-        //        string query = "INSERT INTO usercards (memberid, username, email, issuedate, expirydate, status, password) " +
-        //            "VALUES (@memberid,@username,@email,@issuedate,@expirydate,@status, @password)";
+        public static bool addRecord(int memberid, double amount, string creditcardnum = null)
+        {
+            bool isadded;
+            using (SqlConnection connection = new SqlConnection(DALSettings.connectionString))
+            {
+                string query = "INSERT INTO payments (memberid, amount, creditcardnumber) " +
+                    "VALUES (@memberid,@amount,@creditcardnumber)";
 
-        //        SqlCommand command = new SqlCommand(query, connection);
-        //        command.Parameters.AddWithValue("@memberid", memberid);
-        //        command.Parameters.AddWithValue("@username", username);
-        //        command.Parameters.AddWithValue("@issuedate", issuedate);
-        //        command.Parameters.AddWithValue("@expirydate", expirydate);
-        //        command.Parameters.AddWithValue("@status", status);
-        //        command.Parameters.AddWithValue("@password", password);
-        //        command.Parameters.AddWithValue("@email", email);
-        //        try
-        //        {
-        //            connection.Open();
-        //            command.ExecuteNonQuery();
-        //            isadded = true;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            //Console.WriteLine(ex.ToString());
-        //            isadded = false;
-        //        }
-        //        connection.Close();
-        //        return isadded;
-        //    }
-        //}
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@memberid", memberid);
+                command.Parameters.AddWithValue("@amount", amount);
+                command.Parameters.AddWithValue("@creditcardnumber", creditcardnum ?? (object)DBNull.Value);
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    isadded = true;
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(ex.ToString());
+                    isadded = false;
+                }
+                return isadded;
+            }
+        }
+
+        public static double GetAmountWithMemberID(int id)
+        {
+            double amount = 0;
+            SqlConnection connection = new SqlConnection(DALSettings.connectionString);
+
+            string query = "SELECT Amount FROM Payments WHERE MemberID = @id";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@id", id);
+
+            connection.Open();
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            // Read the first row if available
+            if (reader.Read())
+            {
+                amount = Convert.ToDouble(reader.GetDecimal(0));
+            }
+
+            reader.Close();
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                // Handle the error (optional logging)
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return amount;
+        }
+
     }
 }

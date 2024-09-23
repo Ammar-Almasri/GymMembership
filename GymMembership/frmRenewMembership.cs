@@ -49,6 +49,7 @@ namespace GymMembership
 
             MessageBox.Show("Welcome to the gym","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
             BLLUsercards.updateStatus();
+            //BLLPayments.updateRecord(member.MemberID, (comboBox1.SelectedIndex + 1) * 10, null);
 
             DateTime today = DateTime.Now;  
             user.issuedate = today;

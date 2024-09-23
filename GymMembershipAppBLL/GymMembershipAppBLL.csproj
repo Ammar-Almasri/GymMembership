@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BLLMembers.cs" />
     <Compile Include="BLLMembershipPlans.cs" />
+    <Compile Include="BLLPayments.cs" />
     <Compile Include="BLLUsercards.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

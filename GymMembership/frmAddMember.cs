@@ -62,25 +62,24 @@ namespace GymMembership
                     member.Phone = txtboxPhone.Text;
                     member.DateOfBirth = DateTime.ParseExact(txtboxDateOfBirth.Text, "dd/MM/yyyy", null);
                     member.MembershipPlanID = comboBox1.SelectedIndex + 1;
-                    if (member.AddMember())
-                    {
-                        DialogResult result = MessageBox.Show($"Member Added Successfully!\n Do you want to add another member?"
-                        , "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                        if (result == DialogResult.No)
-                        {
-                            DisableControlsInTab();
-                        }
-                        else
-                        {
-                            txtboxFirstname.Text = string.Empty;
-                            txtboxLastname.Text = string.Empty;
-                            txtboxPhone.Text = string.Empty;
-                            txtboxDateOfBirth.Text = "dd/mm/yyyy";
-                            comboBox1.Text = string.Empty;
-                        }
+                    member.MemberID = member.addMembergetID();
+                    DialogResult result = MessageBox.Show($"Member Added Successfully!\n Do you want to add another member?"
+                    , "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.No)
+                    {
+                        DisableControlsInTab();
                     }
-                    else MessageBox.Show("Failed to add member");
+                    else
+                    {
+                        txtboxFirstname.Text = string.Empty;
+                        txtboxLastname.Text = string.Empty;
+                        txtboxPhone.Text = string.Empty;
+                        txtboxDateOfBirth.Text = "dd/mm/yyyy";
+                        comboBox1.Text = string.Empty;
+                    }
+                    BLLPayments.addRecord(member.MemberID, (comboBox1.SelectedIndex + 1) * 10, null);
                 }
                 catch
                 {

@@ -67,9 +67,9 @@ namespace GymMembership
 
             if (result == DialogResult.Yes)
             {
-                int meberid = user.memberid;
+                int memberid = user.memberid;
                 BLLUsercards.deleteUser(user.username);
-                BLLMembers.deleteMember(meberid);
+                //BLLMembers.deleteMember(memberid);
 
                 MessageBox.Show("deleted","Bye!",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 this.Close();
@@ -80,6 +80,12 @@ namespace GymMembership
         {
             Form form = new frmUpdateAccount(user);
             form.ShowDialog();
+        }
+
+        private void paymentsMenu_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmPayments(user);
+            frm.ShowDialog();
         }
     }
 }
