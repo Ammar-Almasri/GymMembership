@@ -9,6 +9,7 @@ namespace GymMembershipAppBLL
 {
     public class BLLPayments
     {
+
         public static bool isPaymentRecordExistMemberID(int memberid)
         {
             return DALPayments.isPaymentRecordExistMemberID(memberid);

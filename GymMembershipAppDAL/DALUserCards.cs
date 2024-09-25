@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,6 +110,20 @@ namespace GymMembershipAppDAL
 
             return isFound;
         }
+        private static string ComputeHash(string rawData)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
 
         public static bool addUser(int memberid, string username, string email, DateTime issuedate, DateTime expirydate, string status, string password)
         {
@@ -126,7 +141,7 @@ namespace GymMembershipAppDAL
                 command.Parameters.AddWithValue("@issuedate", issuedate);
                 command.Parameters.AddWithValue("@expirydate", expirydate);
                 command.Parameters.AddWithValue("@status", status);
-                command.Parameters.AddWithValue("@password",password);
+                command.Parameters.AddWithValue("@password",ComputeHash(password));
                 command.Parameters.AddWithValue("@email", email);
                 try
                 {
@@ -154,7 +169,7 @@ namespace GymMembershipAppDAL
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", username);
-                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@password", ComputeHash(password));
                 command.Parameters.AddWithValue("@memberid", memberid);
                 command.Parameters.AddWithValue("@email", email);
 

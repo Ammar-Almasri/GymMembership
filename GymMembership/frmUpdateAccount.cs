@@ -48,7 +48,7 @@ namespace GymMembership
             {
                 MessageBox.Show("The password must not be empty.", "Invalid password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (txtboxOldPass.Text == user.password)
+            if (frmLogin.ComputeHash(txtboxOldPass.Text) == user.password)
             {
                 
                 if(txtboxNewPass.Text == txtBoxConfirm.Text)

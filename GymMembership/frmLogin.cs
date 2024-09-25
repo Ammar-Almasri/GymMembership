@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,24 @@ namespace GymMembership
             BLLUsercards.updateStatus();
         }
 
+        public static string ComputeHash(string rawData)
+        {
+            // Create a SHA256 instance
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // Convert the input string to a byte array and compute the hash
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert the byte array to a hexadecimal string
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         public static void openfrmAdmin(string username, string enteredPassword)
         {
             BLLUsercards user = new BLLUsercards(); 
@@ -28,7 +47,7 @@ namespace GymMembership
 
             string actualPassword = user.password;
             
-            if (enteredPassword == actualPassword)
+            if (ComputeHash(enteredPassword) == actualPassword)
             {
                 Form form = new frmAdmin();
                 form.ShowDialog();
@@ -56,7 +75,7 @@ namespace GymMembership
 
 
 
-            if (enteredPassword == actualPassword)
+            if (ComputeHash(enteredPassword) == actualPassword)
             {
                 Form form = new frmUser(user);
                 form.ShowDialog();
